@@ -34,20 +34,17 @@ def format_menu(items):
     output_lines = []
     
     for category, cat_items in groups.items():
-        # Capitalize category name for the header
         header = f"- {category.capitalize()} Items *"
         output_lines.append(header)
         
         for item in cat_items:
-            # Apply the 1.8 price multiplier and format to 2 decimal places
             calculated_price = item['price'] * 1.8
             price_formatted = f"${calculated_price:.2f}"
             
-            # Construct the line with proper indentation and tab separation
             line = f" {price_formatted}\t{item['name']}, {item['quantity']}"
             output_lines.append(line)
         
-        output_lines.append("") # Blank line between categories
+        output_lines.append("")
         
     return "\n".join(output_lines).strip()
 
