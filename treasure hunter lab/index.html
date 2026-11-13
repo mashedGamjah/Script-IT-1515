@@ -29,6 +29,13 @@
             margin: 3px;
             cursor: pointer;
         }
+
+        button:disabled {
+        opacity: 0.4;
+        background-color: #f0f0f0;
+        cursor: not-allowed;
+    }
+
     </style>
 </head>
 
@@ -85,6 +92,10 @@
             } else {
                 message.textContent = "";
             }
+
+                const isOver = data.game_over || data.found;
+                document.querySelectorAll('.dir-btn').forEach(button => button.disabled = isOver);
+            
         }
 
         async function move(direction) {
@@ -101,7 +112,7 @@
             updateGame(data);
         }
 
-        draw([0, 0]);
+        resetGame();
     </script>
 </body>
 </html>
